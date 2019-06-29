@@ -7,14 +7,20 @@ client = discord.Client()
 async def on_message(message):
     if message.content.startswith("!meet"):
         message_list = message.content.split(' ')
-        if len(message_list) < 4:
+        if len(message_list) < 5:
             err_msg = "{0.author.mention}: Incorrect usage: Not enough arguments. ".format(message)
-            err_msg += "Correct usage: `!meet <meeting-subject> <mm-dd-yy> <hh-mm>`"
+            err_msg += "Correct usage: `!meet <meeting-subject> <yyyy-mm-dd> <start-hh-mm-ss> <end-hh-mm-ss>`"
             await message.channel.send(err_msg)
         else:
             meeting_subject = message_list[1]
             meeting_date = message_list[2]
-            meeting_time = message_list[3]
+            meeting_start_time = message_list[3]
+            meeting_end_time = message_list[4]
+
+            event = {
+                'summary' : message_list[1],
+                'start' :
+            }
     
         # ToDo: Connect to Google calendar - get credentials and authenticate
         # ToDo: Create email list
